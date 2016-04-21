@@ -1,14 +1,15 @@
 var socket = io();
 
+
 socket.on("connect", function () {
     console.log("Connected to server");
 });
 
 socket.on('message', function (message) {
-    console.log("new message: ");
-    console.log(message.text);
-    
-    jQuery('.messages').append('<p>'+ message.text +'</p>');
+    //console.log("new message: ");
+   // console.log(message.text);
+    var momentTimestamp = moment.utc(message.timestamp);
+    jQuery('.messages').append('<p><strong>'+ momentTimestamp.local().format('DD/MM/YY h:mm a') + ': ' + '</strong>' + message.text +'</p>');
 });
 
 
