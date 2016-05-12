@@ -19,3 +19,11 @@ body {
   top: 11vh;
 }   
 
+h1 {
+    margin: 24px 0;
+}
+
+.messages p {
+    margin: 6px 0;
+    
+}
