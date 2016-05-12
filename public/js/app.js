@@ -16,14 +16,13 @@ socket.on("connect", function () {
 });
 
 socket.on('message', function (message) {
-    //console.log("new message: ");
-   // console.log(message.text);
+  
     var momentTimestamp = moment.utc(message.timestamp);
-    var $message = jQuery('.messages')
-    
+    var $messages = jQuery('.messages')
+    var $message =jQuery('<li class="list-group-item"></li>')
     $message.append('<p><strong>' + momentTimestamp.local().format('DD/MM/YY h:mm a') + ' ' + message.name + ': ' + '</strong></p>')
     $message.append('<p>' + message.text +'</p>');
-    
+    $messages.append($message)
    
 });
 
@@ -32,6 +31,7 @@ var $form = jQuery('#message-form');
 
 $form.on('submit', function (event) {
     event.preventDefault();
+    
     
     var $message = $form.find('input[name=message]');
   
